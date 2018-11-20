@@ -63,9 +63,13 @@ const Button = styled.div`
         background-color: none;
         color: white;
         }
-      100% {
+      50% {
         background-color: white;
         color: black;
+      }
+      100% {
+        background-color: none;
+        color: white;
       }
     }
   }
@@ -92,11 +96,7 @@ class App extends Component {
     const loanAmount = {loanAmount: this.state.loanAmount};
     const interest = {interest: this.state.interest};
     const yearsToRepay = {yearsToRepay: this.state.yearsToRepay};
-
-    const monthlyPayment = {monthlyPayment: this.state.monthlyPayment};
-    const totalPayment = {totalPaytment: this.state.totalPayment};
-    const totalInterest = {totalInterest: this.state.totalInterest};
-
+    
     const principal = parseFloat(loanAmount.value);
     const calculatedInterest = parseFloat(interest.value) / 100 / 12;
     const calculatedPayment = parseFloat(yearsToRepay.value) * 12; 
