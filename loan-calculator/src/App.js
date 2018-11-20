@@ -89,13 +89,13 @@ class App extends Component {
   calculateResults = e =>{
     e.preventDefault();
 
-    const loanAmount = this.state.loanAmount;
-    const interest = this.state.interest;
-    const yearsToRepay = this.state.yearsToRepay;
+    const loanAmount = {loanAmount: this.state.loanAmount};
+    const interest = {interest: this.state.interest};
+    const yearsToRepay = {yearsToRepay: this.state.yearsToRepay};
 
-    const monthlyPayment = this.state.monthlyPayment;
-    const totalPayment = this.state.totalPayment;
-    const totalInterest = this.state.totalInterest;
+    const monthlyPayment = {monthlyPayment: this.state.monthlyPayment};
+    const totalPayment = {totalPaytment: this.state.totalPayment};
+    const totalInterest = {totalInterest: this.state.totalInterest};
 
     const principal = parseFloat(loanAmount.value);
     const calculatedInterest = parseFloat(interest.value) / 100 / 12;
@@ -148,22 +148,22 @@ class App extends Component {
           onChange={this.changeHandler}
           value = {this.state.yearsToRepay}
           />
-          <Button>Calculate</Button>
+          <Button onClick ={this.calculateResults}>Calculate</Button>
           <Output
           type="number"
-          readonly="readonly"
+          readOnly="readOnly"
           name = "monthlypayment"
           value = {this.state.monthlyPayment}
           />
           <Output
           type="number"
-          readonly="readonly"
+          readOnly="readOnly"
           name="totalPayment"
           value = {this.state.totalPayment}
           />
           <Output
           type="number"
-          readonly="readonly"
+          readOnly="readOnly"
           name="totalInterest"
           value = {this.state.totalInterest}
           />
