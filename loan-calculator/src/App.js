@@ -74,12 +74,12 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-    loanAmount: 0,
-    interest: 0,
-    yearsToRepay: 0,
-    monthlyPayment: 0,
-    totalPayment: 0,
-    totalInterest: 0,
+    loanAmount: [],
+    interest: [],
+    yearsToRepay: [],
+    monthlyPayment: [],
+    totalPayment: [],
+    totalInterest: [],
     }
   }
   changeHandler = (event) => {
@@ -105,21 +105,28 @@ class App extends Component {
     const monthly = (principal*x*calculatedInterest)/(x-1);
 
     if(isFinite(monthly)){
-      monthlyPayment.value = monthly.toFixed(2);
-      totalPayment.value = (monthly * calculatedPayment).toFixed(2);
-      totalInterest.value = ((monthly * calculatedPayment) - principal).toFixed(2);
+      let monthlyResult = this.state.monthlyPayment.join('');
+      if(monthlyResult){
+        monthlyResult = monthly.toFixed(2);
+
+      }
+      let paymentResult = this.state.totalPayment.join('');
+      if(paymentResult){
+        paymentResult = (monthly * calculatedPayment).toFixed(2);
+
+      }
+      let interestResult = this.state.totalInterest.join('');
+      if(interestResult){
+      interestResult = ((monthly * calculatedPayment) - principal).toFixed(2);
+      }
+      this.setState({
+        monthlyPayment: [monthlyResult],
+        totalInterest:[interestResult],
+        totalPayment:[paymentResult],
+      })
     }else{
        
     }
-    
-    this.setState({
-      loanAmount,
-      interest, 
-      yearsToRepay,
-      monthlyPayment,
-      totalInterest,
-      totalPayment,
-    })
   }
   render() {
     return (
