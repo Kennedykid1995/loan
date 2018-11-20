@@ -81,21 +81,21 @@ class App extends Component {
     totalPayment: 0,
     totalInterest: 0,
     }
-    changeHandler = (event) => {
-      this.setState({[event.target.name]: event.target.value})
-    }
+  }
+  changeHandler = (event) => {
+    this.setState({[event.target.name]: event.target.value})
+  }
 
-    // calculateResults = e =>{
-    //   const loanAmount = this.state.input;
-    //   const interest = this.state.input;
-    //   const yearsToRepay = this.state.input;
+  calculateResults = e =>{
+    const loanAmount = this.state.input;
+    const interest = this.state.input;
+    const yearsToRepay = this.state.input;
 
-    //   const monthlyPayment = this.state.output;
-    //   const totalPayment = this.state.output;
-    //   const totalInterest = this.state.output;
+    const monthlyPayment = this.state.output;
+    const totalPayment = this.state.output;
+    const totalInterest = this.state.output;
 
-      
-    // }
+    
   }
   render() {
     return (
