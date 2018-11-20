@@ -87,15 +87,39 @@ class App extends Component {
   }
 
   calculateResults = e =>{
-    const loanAmount = this.state.input;
-    const interest = this.state.input;
-    const yearsToRepay = this.state.input;
+    e.preventDefault();
 
-    const monthlyPayment = this.state.output;
-    const totalPayment = this.state.output;
-    const totalInterest = this.state.output;
+    const loanAmount = this.state.loanAmount;
+    const interest = this.state.interest;
+    const yearsToRepay = this.state.yearsToRepay;
 
+    const monthlyPayment = this.state.monthlyPayment;
+    const totalPayment = this.state.totalPayment;
+    const totalInterest = this.state.totalInterest;
+
+    const principal = parseFloat(loanAmount.value);
+    const calculatedInterest = parseFloat(interest.value) / 100 / 12;
+    const calculatedPayment = parseFloat(yearsToRepay.value) * 12; 
+
+    const x = Math.pow(1 + calculatedInterest, calculatedPayment);
+    const monthly = (principal*x*calculatedInterest)/(x-1);
+
+    if(isFinite(monthly)){
+      monthlyPayment.value = monthly.toFixed(2);
+      totalPayment.value = (monthly * calculatedPayment).toFixed(2);
+      totalInterest.value = ((monthly * calculatedPayment) - principal).toFixed(2);
+    }else{
+       
+    }
     
+    this.setState({
+      loanAmount,
+      interest, 
+      yearsToRepay,
+      monthlyPayment,
+      totalInterest,
+      totalPayment,
+    })
   }
   render() {
     return (
