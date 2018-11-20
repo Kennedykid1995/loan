@@ -96,7 +96,7 @@ class App extends Component {
     const loanAmount = {loanAmount: this.state.loanAmount};
     const interest = {interest: this.state.interest};
     const yearsToRepay = {yearsToRepay: this.state.yearsToRepay};
-    
+
     const principal = parseFloat(loanAmount.value);
     const calculatedInterest = parseFloat(interest.value) / 100 / 12;
     const calculatedPayment = parseFloat(yearsToRepay.value) * 12; 
@@ -120,13 +120,18 @@ class App extends Component {
       interestResult = ((monthly * calculatedPayment) - principal).toFixed(2);
       }
       this.setState({
-        monthlyPayment: [monthlyResult],
+        monthlyPayment:[monthlyResult],
         totalInterest:[interestResult],
         totalPayment:[paymentResult],
       })
     }else{
        
     }
+    this.setState({
+    loanAmount, 
+    interest,
+    yearsToRepay,
+    })
   }
   render() {
     return (
